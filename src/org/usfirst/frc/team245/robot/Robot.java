@@ -85,6 +85,10 @@ public class Robot extends IterativeRobot {
 		Drive.drive(Gamepad.primary.getTriggers(), Gamepad.primary.getLeftX()); //driving with triggers for speed and left joy for turning
 		Drive.shift(Gamepad.primary.getA(), Gamepad.primary.getB()); //shifting with A low gear and B high gear		
 		Intake.intake(Gamepad.secondary.getB()); //runs intake with B on second controller
+		
+		SmartDashboard.putBoolean("Storage full: ", Actuators.checkIntakeCurrentSpike()); //checks if storage is full by checking for a current spike
+		SmartDashboard.putBoolean("Climbing: ", Actuators.checkClimbCurrent()); //checks if robot is climbing
+		SmartDashboard.putBoolean("At top: ", Actuators.checkClimbCurrentSpike()); //checks if robot has climbed to the top by checking for a current spike
 	}
 
 	/**

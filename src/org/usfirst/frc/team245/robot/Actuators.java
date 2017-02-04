@@ -1,10 +1,9 @@
 package org.usfirst.frc.team245.robot;
 
 import com.ctre.CANTalon;
-
-
 import edu.wpi.first.wpilibj.Solenoid;
 import org.usfirst.frc.team245.robot.Constants;
+
 public class Actuators {
 	
 	//Motors
@@ -14,6 +13,7 @@ public class Actuators {
 	private static CANTalon leftDriveMotor;
 	private static CANTalon leftDriveMotorSlave;
 	
+	private static CANTalon climbMotor;
 	private static CANTalon intakeMotor;
 	
 	//Pneumatics
@@ -36,6 +36,7 @@ public class Actuators {
 		leftDriveMotorSlave.set(leftDriveMotor.getDeviceID());
 		leftDriveMotorSlave.reverseOutput(true); //reversing left slave motor because of gear design
 		
+		climbMotor = new CANTalon(Constants.CLIMB_MOTOR_PORT);
 		intakeMotor = new CANTalon(Constants.INTAKE_MOTOR_PORT);
 
 		driveShiftPneumatic = new Solenoid(Constants.DRIVE_SHIFT_PNEUMATIC_PORT);
@@ -70,10 +71,50 @@ public class Actuators {
 	}
 	
 	/*
+	 * @return climbMotor
+	 * */
+	public static CANTalon getClimbMotor() {
+		return climbMotor;
+	}
+	
+	/*
 	 * @return intakeMotor
 	 * */
 	public static CANTalon getIntakeMotor() {
 		return intakeMotor;
+	}
+	
+	/*
+	 * @return if climb current spikes
+	 * */
+	public static boolean checkClimbCurrentSpike(){
+		if (Actuators.getClimbMotor().getOutputCurrent() >= Constants.MAX_CURRENT){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/*
+	 * @return if climb motor is running
+	 * */
+	public static boolean checkClimbCurrent(){
+		if (Actuators.getClimbMotor().getOutputCurrent() > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/*
+	 * @return if intake current spikes
+	 * */
+	public static boolean checkIntakeCurrentSpike(){
+		if (Actuators.getIntakeMotor().getOutputCurrent() >= Constants.MAX_CURRENT){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/*
