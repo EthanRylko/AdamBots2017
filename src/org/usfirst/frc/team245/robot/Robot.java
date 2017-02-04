@@ -89,6 +89,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Storage full: ", Actuators.checkIntakeCurrentSpike()); //checks if storage is full by checking for a current spike
 		SmartDashboard.putBoolean("Climbing: ", Actuators.checkClimbCurrent()); //checks if robot is climbing
 		SmartDashboard.putBoolean("At top: ", Actuators.checkClimbCurrentSpike()); //checks if robot has climbed to the top by checking for a current spike
+		SmartDashboard.putBoolean("Robot moving: ", Actuators.checkDriveMotorCurrent()); //checks if drive motors are running
 	}
 
 	/**

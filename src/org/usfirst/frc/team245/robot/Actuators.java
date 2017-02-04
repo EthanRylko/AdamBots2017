@@ -84,6 +84,14 @@ public class Actuators {
 		return intakeMotor;
 	}
 	
+	public static boolean checkDriveMotorCurrent(){
+		if (Math.abs(Actuators.getLeftDriveMotor().getOutputCurrent()) > 0
+				|| Math.abs(Actuators.getRightDriveMotor().getOutputCurrent()) > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
 	/*
 	 * @return if climb current spikes
 	 * */
