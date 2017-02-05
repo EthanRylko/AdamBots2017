@@ -1,6 +1,7 @@
 package org.usfirst.frc.team245.robot;
 
 import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Solenoid;
 import org.usfirst.frc.team245.robot.Constants;
 
@@ -14,7 +15,7 @@ public class Actuators {
 	private static CANTalon leftDriveMotorSlave;
 	
 	private static CANTalon climbMotor;
-	private static CANTalon intakeMotor;
+	private static VictorSP intakeMotor;
 	
 	//Pneumatics
 	private static Solenoid driveShiftPneumatic;
@@ -37,7 +38,7 @@ public class Actuators {
 		leftDriveMotorSlave.reverseOutput(true); //reversing left slave motor because of gear design
 		
 		climbMotor = new CANTalon(Constants.CLIMB_MOTOR_PORT);
-		intakeMotor = new CANTalon(Constants.INTAKE_MOTOR_PORT);
+		intakeMotor = new VictorSP(Constants.INTAKE_MOTOR_PORT);
 
 		driveShiftPneumatic = new Solenoid(Constants.DRIVE_SHIFT_PNEUMATIC_PORT);
 	}
@@ -80,7 +81,7 @@ public class Actuators {
 	/*
 	 * @return intakeMotor
 	 * */
-	public static CANTalon getIntakeMotor() {
+	public static VictorSP getIntakeMotor() {
 		return intakeMotor;
 	}
 	
@@ -113,17 +114,18 @@ public class Actuators {
 			return false;
 		}
 	}
-	
-	/*
-	 * @return if intake current spikes
-	 * */
-	public static boolean checkIntakeCurrentSpike(){
-		if (Actuators.getIntakeMotor().getOutputCurrent() >= Constants.MAX_CURRENT){
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	
+//	/*
+//	 * @return if intake current spikes
+//	 */ 
+//	public static boolean checkIntakeCurrentSpike(){
+//		if (Actuators.getIntakeMotor(). >= Constants.MAX_CURRENT){
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+//
 	
 	/*
 	 * @return driveShiftPneumatic

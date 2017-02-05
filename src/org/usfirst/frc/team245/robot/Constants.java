@@ -14,7 +14,7 @@ public class Constants {
 	public static final int LEFT_REAR_DRIVE_MOTOR_PORT = 2;
 	public static final int RIGHT_REAR_DRIVE_MOTOR_PORT = 3;
 	public static final int CLIMB_MOTOR_PORT = 4;
-	public static final int INTAKE_MOTOR_PORT = 5;
+	public static final int INTAKE_MOTOR_PORT = 0;
 	public static final int DRIVE_SHIFT_PNEUMATIC_PORT = 0;
 	
 	//TODO: Set MAX_CURRENT to a number once we get an exact value
